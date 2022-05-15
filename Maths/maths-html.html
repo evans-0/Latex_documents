@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>UG Mathematics</title>
+<script>
+  MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], tags: 'ams'}};
+</script>
+<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+</head>
+<body>
+<h1>Vector Calculus</h1>
+
+<h2>The '\(\nabla\)' operator:</h2>
+$$\nabla = \frac{\partial}{\partial x}\hat{i} + \frac{\partial}{\partial y}\hat{j} + \frac{\partial}{\partial z}\hat{k}$$
+
+<h2>Gradient</h2>
+Gradient of a function \(f\) is denoted by grad. \(f\), gradient of \(f\) or \(\nabla f\) and is equal to
+$$\nabla f = \frac{\partial f}{\partial x}\hat{i} + \frac{\partial f}{\partial y}\hat{j} + \frac{\partial f}{\partial z}\hat{k}$$
+
+<h2>Directional derivative</h2>
+Derivative of a function \(f\) is the direction whose unit vector is given by \(\hat{n}\) is given by
+$$\left(\frac{df}{dx}\right)_{\hat{n}} = \nabla f \cdot \hat{n}$$
+
+<h2>Divergence</h2>
+Divergence of a vector point function, \(\vec{F}\) is denoted by div. \(\vec{F}\) or \(\nabla \cdot \vec{F}\)
+$$\vec{F} = F_1\hat{i} + F_2\hat{j} + F_3\hat{k}$$
+$$\nabla \cdot \vec{F} = \frac{\partial F_1}{\partial x} + \frac{\partial F_2}{\partial y} + \frac{\partial F_3}{\partial z}$$
+If divergence of a function is equal to 0, then it is called as a solenoidal.
+
+<h2>Curl</h2>
+Curl of a vector point function, \(\vec{F}\) is denoted by curl. $\vec{F}$ or $\nabla \times \vec{F}$
+If curl of a function is equal to 0, then it is irrotational.
+
+<h2>Greene's theorem</h2>
+$$\oint_C Mdx + Ndy = \iint_S \left(\frac{\partial N}{\partial x} - \frac{\partial M}{\partial y}\right) dxdy$$
+
+<h2>Stoke's theorem</h2>
+Consider a vector point function $\vec{F}$ and $C$ is the curve along which the function acts and $S$ is the surface bounded by the curve $C$.
+$$\oint_C \vec{F}\cdot d\vec{r} = \iint_S (\nabla \times \vec{F}) \cdot d\vec{A}$$
+
+<h2>Divergence theorem</h2>
+Consider a vector point function $\vec{F}$ and $S$ is the surface and $V$ is the volume bounded by the surface $S$.
+$$\iint_S \vec{F}\cdot d\vec{A} = \iiint_V \nabla \cdot \vec{F} dV$$
+
+<h1>Laplace Transform</h1>
+$$\mathcal{L}\left[f(t)\right]=\int_{t=0}^{\infty}f(t)e^{-st}dt$$
+
+<h2>Laplace transform of some functions:</h2>
+<h3>Laplace transform of $\boldsymbol{t^n}$</h3>
+$$\mathcal{L}\left[f(t)\right]=\int_{t=0}^{t=\infty} e^{-st} t^n dt$$
+Let us consider the case when $n=0$, then
+$$\mathcal{L}\left[1\right]=\int_{t=0}^{t=\infty} e^{-st} dt$$
+$$\therefore \mathcal{L}\left[1\right] = \left[\frac{e^{-st}}{-s}\right]_{0}^{\infty}$$
+\begin{equation}
+  \boxed{\mathcal{L}\left[1\right] = \frac{1}{s}} \label{poly:1}
+\end{equation}
+Let us now consider the case when $n=1$, then
+$$\mathcal{L}\left[t\right] = \int_{0}^{\infty} e^{-st} t dt$$
+$$\therefore \mathcal{L}\left[t\right] = \frac{-\partial}{\partial s} \mathcal{L}\left[1\right]$$
+\begin{equation}
+  \boxed{\mathcal{L}\left[t\right] = \frac{1}{s^2}} \label{poly:2}
+\end{equation}
+Similarly, $\mathcal{L}\left[t^2\right] = \frac{-2}{s^3}$
+$\therefore$ we can generalise this as,
+$$\boxed{\mathcal{L}\left[t^n\right] = \frac{n!}{s^{(n+1)}}}$$
+
+<h3>Laplace transform of $\boldsymbol{e^{-at}}$</h3>
+$$\mathcal{L}\left[e^{-at}\right] = \int_{0}^{\infty} e^{-st}e^{-at} dt$$
+$$\mathcal{L}\left[e^{-at}\right] = \int_{0}^{\infty} e^{-(s+a)t} dt$$
+$$\therefore \boxed{\mathcal{L}\left[e^{-at}\right] = \frac{1}{s+a}}$$
+
+<h3>Laplace transform of $\boldsymbol{e^{at}}$</h3>
+$$\mathcal{L}\left[e^{at}\right] = \int_{0}^{\infty} e^{-st}e^{at} dt$$
+$$\mathcal{L}\left[e^{at}\right] = \int_{0}^{\infty} e^{-(s-a)t} dt$$
+$$\therefore \boxed{\mathcal{L}\left[e^{at}\right] = \frac{1}{s-a}}$$
+
+<h3>Laplace transform of $\boldsymbol{\sin(at)}$</h3>
+$$\mathcal{L}\left[\sin(at)\right] = \int_{0}^{\infty} e^{-st} \sin(at)dt$$
+Consider the integral $\int e^{-st}\sin(at)dt$ as $I$.
+Using integration by parts,
+$$\int udv = uv - \int vdu$$
+Here let $u=\sin(at)$ and $dv=e^{-st}dt$, then\\
+$du=a\cos(at)$ and $v=\frac{e^{-st}}{-s}$
+$$\therefore I = \sin(at)\frac{e^{-st}}{-s} - \int a\cos(at) \frac{e^{-st}}{-s}dt$$
+here again we apply integration by parts to $\int a\cos(at) \frac{e^{-st}}{-s}dt$ <br>
+Let $u=a\cos(at)$ and $dv=\frac{e^{-st}}{-s}dt$, then
+$du=-a^2\sin(at)$ and $v=\frac{e^{-st}}{s^2}$
+$$\therefore I = \sin(at)\frac{e^{-st}}{-s} - \left( a\cos(at)\frac{e^{-st}}{s^2} + \int a^2\sin(at)\frac{e^{-st}}{s^2}\right)$$
+$$I = \frac{s^2}{s^2+a^2} \left( -\sin(at)\frac{e^{-st}}{s} - a\cos(at)\frac{e^{-st}}{s^2}\right)$$
+$$I = \frac{e^{-st}}{s^2+a^2}\left(-s\sin(at)-a\cos(at)\right)$$
+Hence,
+$$\mathcal{L}\left[\sin(at)\right] = \left[\frac{e^{-st}}{s^2+a^2}\left(-s\sin(at)-a\cos(at)\right)\right]_{0}^{\infty}$$
+$$\therefore \boxed{\mathcal{L}\left[\sin(at)\right] = \frac{a}{s^2+a^2}}$$
+
+<h3>Laplace transform of $\boldsymbol{\cos(at)}$</h3>
+$$\mathcal{L}\left[\cos(at)\right] = \int_{0}^{\infty} e^{-st} \cos(at)dt$$
+Consider the integral $\int e^{-st}\cos(at)dt$ as $I$.
+Using integration by parts,
+$$\int udv = uv - \int vdu$$
+Here let $u=\cos(at)$ and $dv=e^{-st}dt$, then\\
+$du=-a\sin(at)$ and $v=\frac{e^{-st}}{-s}$
+$$\therefore I = \cos(at)\frac{e^{-st}}{-s} - \int -a\sin(at) \frac{e^{-st}}{-s}dt$$
+here again we apply integration by parts to $\int a\sin(at) \frac{e^{-st}}{s}dt$\\
+here $u=a\sin(at)$ and $dv=\frac{e^{-st}}{s}dt$, then\\
+$du=a^2\cos(at)$ and $v=\frac{e^{-st}}{-s^2}$
+$$\therefore I = \cos(at)\frac{e^{-st}}{-s} - \left( a\sin(at)\frac{e^{-st}}{-s^2} - \int a^2\cos(at)\frac{e^{-st}}{-s^2}\right)$$
+$$I = \frac{s^2}{s^2+a^2} \left( -\cos(at)\frac{e^{-st}}{s} - a\sin(at)\frac{e^{-st}}{s^2}\right)$$
+$$I = \frac{e^{-st}}{s^2+a^2}\left(-s\cos(at)-a\sin(at)\right)$$
+Hence,
+$$\mathcal{L}\left[\sin(at)\right] = \left[\frac{e^{-st}}{s^2+a^2}\left(-s\cos(at)-a\sin(at)\right)\right]_{0}^{\infty}$$
+$$\therefore \boxed{\mathcal{L}\left[\cos(at)\right] = \frac{s}{s^2+a^2}}$$
+
+<h3>Laplace transform of $\boldsymbol{\sinh(at)}$</h3>
+$$\mathcal{L}\left[\sinh(at)\right] = \int_{0}^{\infty} e^{-st}\sinh(at)dt$$
+Consider the integral $\int e^{-st} \sinh(at)dt$ as I. Using integration by parts,\\
+Here let $u=\sinh(at)$ and $dv=e^{-st}$, then
+$du=a\cosh(at)$ and $v=\frac{e^{-st}}{-s}$
+$$\therefore I = \sinh(at)\frac{e^{-st}}{-s} - \int a\cosh(at)\frac{e^{-st}}{-s}$$
+here again we apply integration by parts to $\int a\cosh(at)\frac{e^{-st}}{-s}$
+Here let $u=a\cosh(at)$ and $dv=\frac{e^{-st}}{-s}$, then
+$du=a^2\sinh(at)$ and $v=\frac{e^{-st}}{s^2}$
+$$\therefore I = \sinh(at)\frac{e^{-st}}{-s} - \left( a\cosh(at)\frac{e^{-st}}{s^2} - \int a^2\sinh(at)\frac{e^{-st}}{s^2}dt\right)$$
+$$I = \sinh(at)\frac{e^{-st}}{-s} - a\cosh(at)\frac{e^{-st}}{s^2} + \frac{a^2}{s^2}I$$
+$$\therefore I = \frac{s^2}{s^2-a^2}\left(-\sinh(at)\frac{e^{-st}}{s} - a\cosh(at)\frac{e^{-st}}{s^2}\right)$$
+$$I = \frac{e^{-st}}{s^2-a^2} \left(-s\sinh(at) - a\cosh(at)\right)$$
+Hence,
+$$\mathcal{L}\left[\sinh(at)\right] = \left[ \frac{e^{-st}}{s^2-a^2} \left(-s\sinh(at) - a\cosh(at)\right) \right]_{0}^{\infty}$$
+$$\mathcal{L}\left[\sinh(at)\right] = \frac{-1}{s^2-a^2} \left(-s\sinh(0) - a\cosh(0)\right)$$
+$$\therefore \boxed{\mathcal{L}\left[\sinh(at)\right] = \frac{a}{s^2-a^2}}$$
+
+<h3>Laplace transform of $\boldsymbol{\cosh(at)}$</h3>
+$$\mathcal{L}\left[\cosh(at)\right] = \int_{0}^{\infty} e^{-st}\cosh(at)dt$$
+Consider the integral $\int e^{-st} \cosh(at)dt$ as I. Using integration by parts,\\
+Here let $u=\cosh(at)$ and $dv=e^{-st}$, then
+$du=a\sinh(at)$ and $v=\frac{e^{-st}}{-s}$
+$$\therefore I = \cosh(at)\frac{e^{-st}}{-s} - \int a\sinh(at)\frac{e^{-st}}{-s}$$
+here again we apply integration by parts to $\int a\sinh(at)\frac{e^{-st}}{-s}$
+Here let $u=a\sinh(at)$ and $dv=\frac{e^{-st}}{-s}$, then
+$du=a^2\cosh(at)$ and $v=\frac{e^{-st}}{s^2}$
+$$\therefore I = \cosh(at)\frac{e^{-st}}{-s} - \left( a\sinh(at)\frac{e^{-st}}{s^2} - \int a^2\cosh(at)\frac{e^{-st}}{s^2}dt\right)$$
+$$I = \cosh(at)\frac{e^{-st}}{-s} - a\sinh(at)\frac{e^{-st}}{s^2} + \frac{a^2}{s^2}I$$
+$$\therefore I = \frac{s^2}{s^2-a^2}\left(-\cosh(at)\frac{e^{-st}}{s} - a\sinh(at)\frac{e^{-st}}{s^2}\right)$$
+$$I = \frac{e^{-st}}{s^2-a^2} \left(-s\cosh(at) - a\sinh(at)\right)$$
+Hence,
+$$\mathcal{L}\left[\cosh(at)\right] = \left[ \frac{e^{-st}}{s^2-a^2} \left(-s\cosh(at) - a\sinh(at)\right) \right]_{0}^{\infty}$$
+$$\mathcal{L}\left[\cosh(at)\right] = \frac{-1}{s^2-a^2} \left(-s\cosh(0) - a\sinh(0)\right)$$
+$$\therefore \boxed{\mathcal{L}\left[\cosh(at)\right] = \frac{s}{s^2-a^2}}$$
+
+<h2>Properties of laplace transform</h2>
+<h3>Linearity property</h3>
+1. $\mathcal{L}\left[f(t)+g(t)\right] = \mathcal{L}\left[f(t)\right] + \mathcal{L}\left[g(t)\right]$
+\begin{align*}
+    \mathcal{L}\left[f(t)+g(t)\right] &= \int_{0}^{\infty} e^{-st} (f(t)+g(t))dt \\
+    &= \int_{0}^{\infty} e^{-st} f(t)dt + \int_{0}^{\infty} e^{-st} g(t)dt \\
+&= \mathcal{L}\left[f(t)\right] + \mathcal{L}\left[g(t)\right]
+\end{align*}
+
+2. $\mathcal{L}\left[c\cdot f(t)\right] = c\cdot \mathcal{L}\left[f(t)\right]$ where $c$ is some constant
+\begin{align*}
+    \mathcal{L}\left[c\cdot f(t)\right] &= \int_{0}^{\infty} e^{-st} c\cdot f(t)dt \\
+    &= c\cdot \int_{0}^{\infty} e^{-st} f(t)dt \\
+    &= c\cdot \mathcal{L}\left[f(t)\right]
+  \end{align*}
+
+<h3>Shifting property</h3>
+1. If $\mathcal{L}\left[f(t)\right] = F(s)$,  then $\mathcal{L}\left[e^{-at}f(t)\right] = F(s+a)$
+$$\mathcal{L}\left[f(t)\right] = \int_{0}^{\infty} e^{-st}f(t)dt$$
+\begin{equation}
+\mathcal{L}\left[f(t)\right] = F(s) \label{sp:1}
+\end{equation}
+\begin{align*}
+\mathcal{L}\left[e^{-at}f(t)\right] &= \int_{0}^{\infty} e^{-st}e^{-at}f(t)dt\\
+&= \int_{0}^{\infty} e^{-(s+a)t}f(t)dt \\
+\end{align*}
+Comparing the previous equation with \eqref{sp:1},
+\[
+ \mathcal{L}\left[e^{-at}f(t)\right] = F(s+a)
+\]
+
+2. If $\mathcal{L}\left[f(t)\right] = F(s)$,  then $\mathcal{L}\left[e^{at}f(t)\right] = F(s-a)$
+
+  $$\mathcal{L}\left[f(t)\right] = \int_{0}^{\infty} e^{-st}f(t)dt$$
+  \begin{equation}
+    \mathcal{L}\left[f(t)\right] = F(s) \label{sp:2}
+  \end{equation}
+  \begin{align*}
+    \mathcal{L}\left[e^{at}f(t)\right] &= \int_{0}^{\infty} e^{-st}e^{at}f(t)dt\\
+    &= \int_{0}^{\infty} e^{-(s-a)t}f(t)dt \\
+  \end{align*}
+  Comparing the previous equation with \eqref{sp:2},
+  \[
+  \mathcal{L}\left[e^{at}f(t)\right] = F(s-a)
+  \]
+
+
+<h3>Change of scale</h3>
+If $\mathcal{L}\left[f(t)\right]=F(s)$, then $\mathcal{L}\left[f(at)\right]=\frac{1}{a}F\left(\frac{s}{a}\right)$
+
+$$\mathcal{L}\left[f(t)\right] = \int_{0}^{\infty} e^{-st}f(t)dt$$
+\begin{equation}
+\mathcal{L}\left[f(t)\right] = F(s) \label{cos:1}
+\end{equation}
+\begin{align*}
+\mathcal{L}\left[f(at)\right] &= \int_{0}^{\infty} e^{-st}f(at)dt\\
+\text{let $u=at$ and $du=adt$} \\
+&= \int_{0}^{\infty} \frac{1}{a}e^{-\frac{s}{a}u}f(u)du
+\end{align*}
+Comparing the previous equation with \eqref{cos:1},
+$$\mathcal{L}\left[f(at)\right] = \frac{1}{a}F\left(\frac{s}{a}\right)$$
+
+
+<h3>Multiplication by $\boldsymbol{t^n}$</h3>
+$$\mathcal{L}\left[t^nf(t)\right] = \int_{0}^{\infty} e^{-st} t^n f(t) dt$$
+Let us consider this for various values of $n$.
+We know from the definition of laplace transform that,
+\begin{equation}
+\mathcal{L}\left[f(t)\right] = \int_{0}^{\infty} e^{-st} f(t) dt \label{mbt:1}
+\end{equation}
+Differentiating \eqref{mbt:1} w.r.t. $s$ we get,
+$$\frac{d}{ds}\mathcal{L}\left[f(t)\right] = \int_{0}^{\infty} -t e^{-st} f(t) dt$$
+$$\therefore \mathcal{L}\left[tf(t)\right] = \int_{0}^{\infty} e^{-st} t f(t) dt$$
+\begin{equation}
+\mathcal{L}\left[tf(t)\right] = -\frac{dF(s)}{ds} \label{mbt:2}
+\end{equation}
+Differentiating \eqref{mbt:2} w.r.t. $s$ we get,
+$$\frac{d}{ds}\mathcal{L}\left[tf(t)\right] = \int_{0}^{\infty} t^2 e^{-st} f(t)dt$$
+\begin{equation}
+\therefore \mathcal{L}\left[t^2f(t)\right] = \frac{d^2F(s)}{ds^2} \label{mbt:3}
+\end{equation}
+Similarly, we get
+\begin{equation}
+\mathcal{L}\left[t^3f(t)\right] = -\frac{d^3F(s)}{ds^3} \label{mbt:4}
+\end{equation}
+
+From \eqref{mbt:2}, \eqref{mbt:3} and \eqref{mbt:4} we can generalise,
+$$\mathcal{L}\left[t^nf(t)\right] = (-1)^n \frac{d^nF(s)}{ds^n}$$
+
+<h3>Division by $\boldsymbol{t^n}$</h3>
+$$\mathcal{L}\left[\frac{f(t)}{t^n}\right] = \int_{0}^{\infty} e^{-st} \frac{f(t)}{t^n} dt$$
+Let us consider this for various values of $n$. We know from the distribution of laplace transform that,
+\begin{equation}
+  \mathcal{L}\left[f(t)\right] = \int_{0}^{\infty} e^{-st} f(t) dt \label{dbt:1}
+\end{equation}
+Integrating \eqref{dbt:1} w.r.t. $s$ we get,
+\begin{align*}
+  \int_{s}^{\infty} \mathcal{L}\left[f(t)\right] ds &= \int_{0}^{\infty} f(t) \left[ \frac{e^{-st}}{-t} \right]_{s=s}^{\infty} dt \\
+  &= \int_{0}^{\infty} e^{-st} \frac{f(t)}{t} dt
+\end{align*}
+\begin{equation}
+  \mathcal{L}\left[\frac{f(t)}{t}\right] = \int_{s}^{\infty} F(s)ds \label{dbt:2}
+\end{equation}
+Integrating \eqref{dbt:2} w.r.t. $s$ we get,
+\begin{align*}
+  \int_{s}^{\infty} \mathcal{L}\left[\frac{f(t)}{t}\right] &= \int_{0}^{\infty} f(t) \left[\frac{e^{-st}}{-t^2}\right]_{s=s}^{\infty} dt \\
+  &= \int_{0}^{\infty} e^{-st} \frac{f(t)}{t^2} dt
+\end{align*}
+\begin{equation}
+  \mathcal{L}\left[\frac{f(t)}{t^2}\right] = \int_{0}^{\infty} \int_{0}^{\infty} F(s) ds ds \label{dbt:3}
+\end{equation}
+From \eqref{dbt:2} and \eqref{dbt:3} we can generalise,
+$$\mathcal{L}\left[\frac{f(t)}{t^n}\right] = \int_{0}^{\infty} \dots \int_{0}^{\infty} F(s) ds \dots ds$$
+
+<h2>Laplace transform of derivative of a function</h2>
+\begin{equation}
+  \mathcal{L}\left[f(t)\right] = \int_{0}^{\infty} e^{-st}f(t)dt = F(s) \label{ltdf:1}
+  \end{equation}
+
+<h3>Laplace transform of first derivative of a function</h3>
+Using integration by parts on \eqref{ltdf:1}, <br>
+let $u=f(t)$ and $dv=e^{-st}$, then
+$du=f'(t)$ and $v=\frac{e^{-st}}{-s}$
+$$F(s) = \left[f(t)\frac{e^{-st}}{-s}\right]_{0}^{\infty} + \int_{0}^{\infty}e^{-st}\frac{f'(t)}{s} dt$$
+\begin{equation}
+  F(s) = \frac{f(0)}{s} + \int_{0}^{\infty} e^{-st} \frac{f'(t)}{s} dt \label{ltdf:2}
+\end{equation}
+$$\therefore \mathcal{L}\left[f'(t)\right] = \int_{0}^{\infty} e^{-st} f'(t) dt = s\cdot F(s) - f(0)$$
+
+<h3>Laplace transform of second derivative of a function</h3>
+Consider $\int e^{-st} f'(t)dt$. Using integration by parts, <br>
+let $u=f'(t)$ and $dv=\frac{e^{-st}}{s}$, then
+$du=f''(t)$ and $v=\frac{e^{-st}}{-s^2}$
+$$\therefore \int_{0}^{\infty} e^{-st} f'(t) dt = \left[-e^{-st}\frac{f'(t)}{s^2}\right]_{0}^{\infty} + \int_{0}^{\infty} e^{-st}\frac{f''(t)}{s^2}$$
+Using the above equation in \eqref{ltdf:2},
+$$F(s) = \frac{f(0)}{s} + \frac{f'(0)}{s^2} + \int_{0}^{\infty}e^{-st}f''(t)dt$$
+$$\therefore \mathcal{L}\left[f''(t)\right] = \int_{0}^{\infty} e^{-st} f''(t) dt = s^2\cdot F(s) - s\cdot f(0) - f'(0)$$
+
+<h2>Laplace transform of a periodic function</h2>
+Consider a periodic function $f(t)$ with period $T$.
+$$\therefore f(t+nT) = f(t)$$
+where $n$ is an integer
+$$\mathcal{L}\left[f(t)\right] = \sum_{n=0}^{\infty} \int_{nT}^{(n+1)T} e^{-st} f(t) dt$$
+let $t=\tau+nT$, $dt=d\tau$
+$$\mathcal{L}\left[f(\tau+nT)\right] = \sum_{n=0}^{\infty} \int_{0}^{T} e^{-s(\tau+nT)} f(\tau+nT) d\tau$$
+$$\mathcal{L}\left[f(\tau)\right] = \sum_{n=0}^{\infty} e^{-snT} \int_{0}^{T} e^{-s\tau} f(\tau)d\tau$$
+Consider $\sum_{n=0}^{\infty} e^{(-sT)n}$. This is infinite sum of a geometric series. We know that $S_{\infty} = \frac{1}{1-r}$
+$$\therefore \mathcal{L}\left[f(\tau)\right] = \frac{1}{1-e^{-sT}} \int_{0}^{T} e^{-s\tau} f(\tau) d\tau$$
+</body>
+</html>
